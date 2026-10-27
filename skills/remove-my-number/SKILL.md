@@ -180,6 +180,11 @@ Privacy limits for this step:
    (Google help: https://support.google.com/mail/answer/15621070; Google says it is rolling out gradually, so it may be missing).
 2. If it is missing, find senders with Gmail search (operators from https://support.google.com/mail/answer/7190):
    `category:promotions newer_than:6m`, `list:` addresses, `category:updates newer_than:6m`. Count messages per sender.
+   Search results are sorted by relevance and their pages may not advance when you change the page. If that happens,
+   page through the **Promotions tab** itself (`#category/promotions`, then `/p2`, `/p3`…; newest first, 50 per page),
+   wait for the first row to change before reading, and stop at the first date older than your time window.
+   Read rows from the list only (sender address and name from the row, date from the date cell). For large mailboxes,
+   aggregate in the page and pull results out in small chunks.
 3. Show a table: `# | sender | messages (6 months) | last date`. The user picks which ones.
 4. For each picked sender, after the user's yes for that sender, click **Gmail's own "Unsubscribe" button**
    (in Manage subscriptions, or the "Unsubscribe" link Gmail shows next to the sender name). Never click unsubscribe links
