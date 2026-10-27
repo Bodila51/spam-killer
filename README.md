@@ -17,7 +17,7 @@ objection to direct marketing, source of data) for you to approve and send.
 3. **Find.** It searches the main US people-search sites (Spokeo, Whitepages, BeenVerified, PeopleLooker, Intelius and its sister sites, PeopleFinders, TruePeopleSearch, FastPeopleSearch, USPhoneBook, SearchPeopleFree, ThatsThem), plus a plain web search for your number and email on any site. Radaris is listed as gone: its domain was seized by a US court in August 2026 and shows a table: site, listing link, what the listing shows, how to opt out.
 4. **Remove.** For each site you say yes or no. Claude fills the form. CAPTCHAs, confirmation emails, phone codes, ID uploads and payments go to a **"Needs you"** list. Claude never solves CAPTCHAs, never pays and never uploads ID.
 5. **GDPR (EU/UK).** It drafts Art. 17 erasure, Art. 21(3) direct-marketing objection and Art. 15(1)(g) source-of-data letters, which companies must answer within one month (Art. 12(3)). It shows you each draft and sends nothing without your yes. It writes only to privacy contacts verified on the company's own site.
-6. **Ledger.** Everything is logged to a local `ledger.csv`. Proof screenshots go to `proof/` with form fields and personal text blurred. Your number and email are masked in all chat output (`+359 *** *** *12`, `y***@gmail.com`).
+6. **Ledger.** Each step is logged to a local `ledger.csv`. Proof screenshots go to `proof/` with form fields and personal text blurred. Your number and email are masked in all chat output (`+359 *** *** *12`, `y***@gmail.com`).
 7. **Recheck.** Listings can come back. Claude Code cannot schedule itself, so the skill saves a one-line re-run command and shows you how to run it monthly with Task Scheduler or cron.
 
 ## Install
@@ -72,7 +72,7 @@ A recheck reads your `ledger.csv`, searches again, and flags listings that came 
 
 ## Privacy
 
-Everything stays on your machine: `ledger.csv` and `proof/` are gitignored and never uploaded by the skill.
+All files stay on your machine: `ledger.csv` and `proof/` are gitignored and never uploaded by the skill.
 Searches are made from your browser or through Claude's web tools, so the sites you search do see those queries.
 
 ## License
