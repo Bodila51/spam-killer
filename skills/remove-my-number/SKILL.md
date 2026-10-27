@@ -103,6 +103,13 @@ public search URL if it has one, otherwise mark `manual-check` and give the user
 - **Non-US number:** these sites rarely list non-US numbers. Still search by **email** and by **name** (if the user
   ever lived in the US), and say plainly: "US sites mostly index US numbers, so finding nothing here is expected."
 Match a listing to the user only when the phone or email actually appears on it, or the user confirms it is them.
+
+**Teasers are not results.** Many phone and email searches show a "Scanning… 100%" animation and then ask you to
+accept terms, agree to marketing emails ("I certify…", "I understand – build my report") or pay ("Unlock results").
+Never click those: accepting terms needs the user's explicit yes, and you never pay. Mark the site `gated` with the
+search link so the user can decide. A free page that shows a real listing (name, city, age, phone, relatives) counts
+as `found`. A real "did not match any results" page counts as `not found`. Name-URL searches (for example
+`https://www.spokeo.com/First-Last`) often give an honest free answer where phone or email searches only tease.
 If a site is `blocked` from this connection, note it and move on (see rule 4).
 
 ### 3c. Findings table
@@ -111,8 +118,8 @@ Show one table (masked values only):
 | # | Site | Found? | Listing link | What it shows (types only: phone, email, address, relatives, age) | Opt-out method | Mode |
 |---|------|--------|--------------|------------------------------|----------------|------|
 
-Use `found`, `not found`, `blocked`, `manual-check`. Log one row per site to `ledger.csv`
-(`status` = `found` / `not_found` / `blocked` / `manual_check`).
+Use `found`, `not found`, `gated`, `blocked`, `manual-check`. Log one row per site to `ledger.csv`
+(`status` = `found` / `not_found` / `gated` / `blocked` / `manual_check`).
 
 ## Step 4: Remove (one site at a time, yes first)
 
