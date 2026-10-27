@@ -112,6 +112,20 @@ as `found`. A real "did not match any results" page counts as `not found`. Name-
 `https://www.spokeo.com/First-Last`) often give an honest free answer where phone or email searches only tease.
 If a site is `blocked` from this connection, note it and move on (see rule 4).
 
+### 3b-2. Caller-ID apps (most useful for non-US numbers)
+Apps like Truecaller and GetContact build their directories from users' uploaded contact lists, so a number can be
+listed with a name or tags other people saved for it. Whether a given number is listed is unknown until the user checks.
+Never say a number "is" listed before seeing it. You never install these apps, never log in, never receive or type
+the user's SMS/app codes unless the user types the code to you themselves.
+
+| Service | Official route (checked 2026-10-27) | What the user does | GDPR |
+|---------|-------------------------------------|--------------------|------|
+| Truecaller | https://www.truecaller.com/unlisting → button "No, I want to unlist" → follow the form on the page | Completes the CAPTCHA/verification. The page states unlisting cannot be reversed and the user loses spam protection and caller ID; tell them before their yes. Seeing what name Truecaller shows needs the app or a login: that is the user's step. | Truecaller is an EU (Swedish) company: an Art. 15 request returns what it holds about the number. Get the DPO contact from its own privacy policy at run time. |
+| GetContact | https://getcontact.com/en/manage → choose country, enter the number → Continue → verify the number | Receives and enters the verification code; then manages, hides or deletes the profile on the page that follows. The tags people saved for the number are visible only in the app after the user logs in. | GetContact names "Getverify LDA" in its footer (LDA is a Portuguese company form; confirm the controller in its privacy policy); footer link "Privacy Policy / GDPR". Art. 15 asks which tags/names are stored for the number. |
+
+In Browser mode you may open these pages and fill the phone-number field after the user's yes for that service;
+stop at every code, CAPTCHA or app login and put it on "Needs you".
+
 ### 3c. Findings table
 Show one table (masked values only):
 
