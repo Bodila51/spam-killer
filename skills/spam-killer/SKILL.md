@@ -26,8 +26,8 @@ and remove them. Work through the steps in order. Be plain and honest about what
    Do not retry with a changed user-agent, curl, headless tricks or proxies. Mark it `blocked` and give the user the
    link to open themselves.
 5. **Masking.** In everything you print, save to proof, or show on screen, mask the phone and email:
-   - phone: keep the country code and the last 2 digits: `+359 *** *** *12`, `+1 *** *** **34`
-   - email: first character, `***`, then `@domain`: `y***@gmail.com`
+   - phone: keep the country code and the last 2 digits: `+44 **** ****23`, `+1 *** *** **34`
+   - email: first character, `***`, then `@domain`: `m***@gmail.com`
    - Never print the full number or email back, even when confirming intake. Use the real values only inside
      search queries and form fields.
    - Full name may be shown, but blur it in screenshots.
@@ -60,7 +60,7 @@ Otherwise ask, in one message:
 5. "Do you confirm these are your own details, and you want me to search for them?" (must be yes)
 
 Then repeat back the **masked** values and the country. Normalize the phone to E.164 internally
-(`+359881234512`) and keep the local formats for searching (`0881234512`, `088 123 4512`, `+359 88 123 4512`).
+(`+447700900123`) and keep the local formats for searching (`07700900123`, `07700 900123`, `+44 7700 900123`).
 Note whether the number is North American (`+1`). US people-search sites index almost only `+1` numbers.
 
 ## Step 2: Mode check (say which mode out loud)
@@ -88,7 +88,7 @@ Searching never changes a listing. Do not click "remove", "opt out" or "claim" d
 
 ### 3a. Open web (any country)
 Run WebSearch for each of these, in quotes, and note pages that show the number or email:
-- each phone format from Step 1, for example `"+359 88 123 4512"`, `"0881234512"`, `"088 123 4512"`
+- each phone format from Step 1, for example `"+44 7700 900123"`, `"07700900123"`, `"07700 900123"`
 - the email address
 - `"<full name>" "<city or country>"` (only to match results above, not to collect info about namesakes)
 Report pages that actually contain the user's number or email: directories, classifieds, old forum posts,

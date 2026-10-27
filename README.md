@@ -22,7 +22,7 @@ that sell your number and email.
 6. **B2B contact databases.** Opt-out and privacy-request pages for ZoomInfo, Apollo, Lusha, SignalHire, Hunter, Kaspr, Cognism, Acxiom, Epsilon, LiveRamp and others: the companies that sell contact details to sales teams.
 7. **Do-not-call registry.** For your country of residence, the official registry link and steps (for example donotcall.gov, TPS, DNCL, the Do Not Call Register, Registro delle Opposizioni, Não Me Perturbe, İYS), or a plain "there is none here". Registering is your step. These registries cut legitimate telemarketing, not scam calls.
 8. **Letters by country law.** EU/EEA (GDPR, with the national authorities), UK, Switzerland, US states (starting with California, including the DROP platform), Canada, Brazil, Mexico, Argentina, Australia, New Zealand, Japan, South Korea, Singapore, India, South Africa, Turkey, Ukraine. Each has the law, your rights (access including where they got your data, erasure, stop marketing), the legal deadline, the regulator and a letter in the company's language. Other countries get a polite request with no deadline claimed. You see each draft; nothing is sent without your yes, and only to privacy contacts found on the company's own site.
-9. **Ledger.** Each step is logged to a local `ledger.csv`. Proof screenshots go to `proof/` with form fields and personal text blurred. Your number and email are masked in all chat output (`+359 *** *** *12`, `y***@gmail.com`).
+9. **Ledger.** Each step is logged to a local `ledger.csv`. Proof screenshots go to `proof/` with form fields and personal text blurred. Your number and email are masked in all chat output (`+44 **** ****23`, `m***@gmail.com`).
 10. **Recheck.** Listings can come back. Claude Code cannot schedule itself, so the skill saves a one-line re-run command and shows you how to run it monthly with Task Scheduler or cron.
 
 ## Install
@@ -66,7 +66,7 @@ A recheck reads your `ledger.csv`, searches again, and flags listings that came 
 
 ## Honest limits
 
-- **People-search sites are mostly American.** Non-US numbers (for example +359) often show up on few or none of them. Outside the US, the letters, the do-not-call registry, caller-ID apps, B2B databases and the Gmail sweep usually do more.
+- **People-search sites are mostly American.** Non-US numbers (for example a UK +44 number) often show up on few or none of them. Outside the US, the letters, the do-not-call registry, caller-ID apps, B2B databases and the Gmail sweep usually do more.
 - **Less spam, not zero.** Do-not-call registries and letters work on companies that follow the law. Scammers ignore both.
 - **Some sites block visitors outside the US.** From a non-US connection, several free people-search sites show a block page. The skill marks them `blocked` and does not try to get around it.
 - **Some opt-outs are limited by US state law.** PeopleFinders, for example, says its opt-out applies to residents of US states with privacy laws.

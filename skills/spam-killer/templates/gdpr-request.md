@@ -60,12 +60,12 @@ Yours faithfully,
 ## Filling notes for Claude
 
 - `{{SUPERVISORY_AUTHORITY}}`: the user's country's data protection authority, for example
-  Bulgaria: Commission for Personal Data Protection (CPDP, cpdp.bg); UK: Information
+  France: CNIL (cnil.fr); UK: Information
   Commissioner's Office (ICO, ico.org.uk); Germany: the relevant state authority;
   Ireland: Data Protection Commission. Confirm the name on the authority's own site.
 - UK users: replace the regulation line with the UK GDPR / DPA 2018 wording. Article numbers stay the same.
 - US companies with no EU establishment may ignore GDPR. Say so honestly, and add the US site's
   own opt-out link to the reply plan, plus the CCPA/state-law request form if the company offers one.
 - Show the full draft with the phone number and email **masked** in the chat preview
-  (`+359 *** *** *12`, `y***@gmail.com`). Put the real values only into the letter that is actually sent.
+  (`+44 **** ****23`, `m***@gmail.com`). Put the real values only into the letter that is actually sent.
 - Log each letter in `ledger.csv` with `status=letter_sent` and `due` = sent date + 1 month.

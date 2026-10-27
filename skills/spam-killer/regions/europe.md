@@ -5,7 +5,7 @@ letter, Claude may re-open the official text; flows and URLs change.
 
 ## EU and EEA (GDPR)
 
-Applies to people in the EU/EEA, including non-citizens living there (for example a Ukrainian living in Sofia).
+Applies to people in the EU/EEA, including non-citizens living there (for example a Brazilian living in Lisbon).
 
 | Right | GDPR article | What the letter asks |
 |-------|--------------|----------------------|
@@ -106,7 +106,7 @@ them. They cut legitimate telemarketing.
   https://www.ombudsman.gov.ua/uk/zahist-personalnih-danih ; hotline 1678; e-cabinet https://cabinet.ombudsman.gov.ua/
 - **Do-not-call:** no national registry found.
 - **Note:** this law protects people in Ukraine and data processed by Ukrainian companies. A Ukrainian living in the EU
-  (for example in Bulgaria) uses the GDPR for EU companies, and this law for Ukrainian companies.
+  (for example in Poland) uses the GDPR for EU companies, and this law for Ukrainian companies.
 - **Letter:** in Ukrainian:
   > {{COMPANY}}. Я, {{NAME}} (телефон {{PHONE}}, e-mail {{EMAIL}}), відповідно до статті 8 Закону України «Про захист
   > персональних даних» прошу повідомити, чи обробляєте ви мої персональні дані, джерело їх отримання, мету обробки та
