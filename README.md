@@ -1,4 +1,4 @@
-# /remove-my-number
+# /spam-killer
 
 A Claude Code skill that looks for **your own** phone number and email on people-search and
 data-broker sites, shows you what each listing exposes, and helps you remove it, one site at a
@@ -32,18 +32,18 @@ The skill is a folder: `SKILL.md` plus `templates/`, `regions/` and `data-broker
 **Windows (PowerShell)**
 
 ```powershell
-Copy-Item -Recurse -Force .\skills\remove-my-number "$env:USERPROFILE\.claude\skills\remove-my-number"
+Copy-Item -Recurse -Force .\skills\spam-killer "$env:USERPROFILE\.claude\skills\spam-killer"
 ```
 
-The skill ends up at `%USERPROFILE%\.claude\skills\remove-my-number\SKILL.md`.
+The skill ends up at `%USERPROFILE%\.claude\skills\spam-killer\SKILL.md`.
 
 **macOS / Linux**
 
 ```bash
-mkdir -p ~/.claude/skills && cp -R skills/remove-my-number ~/.claude/skills/
+mkdir -p ~/.claude/skills && cp -R skills/spam-killer ~/.claude/skills/
 ```
 
-The skill ends up at `~/.claude/skills/remove-my-number/SKILL.md`.
+The skill ends up at `~/.claude/skills/spam-killer/SKILL.md`.
 
 For browser mode, install and connect the Claude in Chrome extension, or have Playwright available.
 Without a browser tool the skill still runs in manual mode.
@@ -53,13 +53,13 @@ Without a browser tool the skill still runs in manual mode.
 In Claude Code, type:
 
 ```
-/remove-my-number
+/spam-killer
 ```
 
 To re-run later (for example monthly):
 
 ```bash
-claude "/remove-my-number recheck"
+claude "/spam-killer recheck"
 ```
 
 A recheck reads your `ledger.csv`, searches again, and flags listings that came back.

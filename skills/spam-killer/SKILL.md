@@ -1,11 +1,11 @@
 ---
-name: remove-my-number
-description: Find the user's OWN phone number and email on people-search sites, caller-ID apps and B2B contact databases, remove them one site at a time after the user's yes, unsubscribe from marketing mail in Gmail, point to the national do-not-call registry, and draft privacy-law letters by country of residence. Use "/remove-my-number recheck" for a monthly re-scan.
+name: spam-killer
+description: Find the user's OWN phone number and email on people-search sites, caller-ID apps and B2B contact databases, remove them one site at a time after the user's yes, unsubscribe from marketing mail in Gmail, point to the national do-not-call registry, and draft privacy-law letters by country of residence. Use "/spam-killer recheck" for a monthly re-scan.
 disable-model-invocation: true
 argument-hint: "[recheck]"
 ---
 
-# /remove-my-number
+# /spam-killer
 
 You help the user find their **own** phone number and email on people-search and data-broker sites
 and remove them. Work through the steps in order. Be plain and honest about what worked and what did not.
@@ -40,8 +40,8 @@ and remove them. Work through the steps in order. Be plain and honest about what
 ## Data folder
 
 All local files live in one folder (create it if missing):
-- Windows: `%USERPROFILE%\.remove-my-number\`
-- macOS/Linux: `~/.remove-my-number/`
+- Windows: `%USERPROFILE%\.spam-killer\`
+- macOS/Linux: `~/.spam-killer/`
 
 Files: `ledger.csv` (header in `templates/ledger-header.csv` next to this file), `proof/` (blurred screenshots),
 `profile.txt` (masked display values + country, NO full phone/email), `recheck.txt` (the re-run command).
@@ -265,14 +265,14 @@ Then the full "Needs you" list (numbered, with links), then:
 Claude Code cannot wake itself up the way hosted assistant "routines" can. Save this command to `recheck.txt`:
 
 ```
-claude "/remove-my-number recheck"
+claude "/spam-killer recheck"
 ```
 
 Offer, only if the user wants it, a monthly reminder that opens a terminal with that command:
 - **Windows (Task Scheduler)**, in PowerShell:
-  `schtasks /Create /SC MONTHLY /D 1 /ST 10:00 /TN "remove-my-number recheck" /TR "powershell -NoExit -Command claude '/remove-my-number recheck'"`
+  `schtasks /Create /SC MONTHLY /D 1 /ST 10:00 /TN "spam-killer recheck" /TR "powershell -NoExit -Command claude '/spam-killer recheck'"`
 - **macOS** (cron entry via `crontab -e`, opens Terminal on the 1st at 10:00):
-  `0 10 1 * * osascript -e 'tell application "Terminal" to do script "claude \"/remove-my-number recheck\""'`
+  `0 10 1 * * osascript -e 'tell application "Terminal" to do script "claude \"/spam-killer recheck\""'`
 - **Linux:** a calendar reminder is simpler; cron cannot open an interactive terminal reliably.
 Do not create the scheduled task yourself unless the user says yes to that exact command.
 

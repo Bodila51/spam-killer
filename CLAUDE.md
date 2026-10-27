@@ -1,6 +1,6 @@
-# remove-my-number
+# spam-killer
 
-A Claude Code skill (`skills/remove-my-number/SKILL.md`) that finds a user's own phone number and email
+A Claude Code skill (`skills/spam-killer/SKILL.md`) that finds a user's own phone number and email
 on people-search sites and helps remove them, plus GDPR letters for EU/UK users.
 
 ## Rules for working on this repo
