@@ -1,0 +1,5 @@
+# Personal data never goes into git
+ledger.csv
+proof/
+*.local.*
+.env
