@@ -1,6 +1,6 @@
 ---
 name: remove-my-number
-description: Find the user's OWN phone number and email on people-search / data-broker sites, show what each listing exposes, and help remove them one site at a time after the user's yes. Drafts GDPR erasure/objection letters for EU/UK users. Use "/remove-my-number recheck" for a monthly re-scan.
+description: Find the user's OWN phone number and email on people-search sites, caller-ID apps and B2B contact databases, remove them one site at a time after the user's yes, unsubscribe from marketing mail in Gmail, point to the national do-not-call registry, and draft privacy-law letters by country of residence. Use "/remove-my-number recheck" for a monthly re-scan.
 disable-model-invocation: true
 argument-hint: "[recheck]"
 ---
@@ -15,7 +15,7 @@ and remove them. Work through the steps in order. Be plain and honest about what
 1. **Own data only.** Before any search, the user must confirm the phone, email and name are their own.
    If they ask you to look up someone else (partner, ex, employee, a caller), refuse and stop that request.
    The only exception: a parent or legal guardian acting for their minor child, who confirms that out loud.
-2. **Yes before every submission.** Never submit an opt-out form, send an email or a letter without the
+2. **Yes before each submission.** Never submit an opt-out form, send an email or a letter without the
    user's explicit yes **for that specific site or letter**. One yes covers one site. Searching and reading are fine without asking.
 3. **"Needs you" list.** You never solve CAPTCHAs (including "I'm not a robot", hCaptcha, Turnstile, puzzles),
    never click links in the user's inbox for them, never read or enter SMS/call codes on their behalf unless they type
@@ -56,7 +56,7 @@ Otherwise ask, in one message:
 1. Phone number (with country code)
 2. Email address (one is enough; more are fine)
 3. Full name as it might appear in records (and former names if any)
-4. Country, and if US: city and state (helps pick the right record)
+4. Country of residence (decides which privacy law and do-not-call registry apply), and if US: city and state
 5. "Do you confirm these are your own details, and you want me to search for them?" (must be yes)
 
 Then repeat back the **masked** values and the country. Normalize the phone to E.164 internally
@@ -124,7 +124,7 @@ the user's SMS/app codes unless the user types the code to you themselves.
 | GetContact | https://getcontact.com/en/manage → choose country, enter the number → Continue → verify the number | Receives and enters the verification code; then manages, hides or deletes the profile on the page that follows. The tags people saved for the number are visible only in the app after the user logs in. | GetContact names "Getverify LDA" in its footer (LDA is a Portuguese company form; confirm the controller in its privacy policy); footer link "Privacy Policy / GDPR". Art. 15 asks which tags/names are stored for the number. |
 
 In Browser mode you may open these pages and fill the phone-number field after the user's yes for that service;
-stop at every code, CAPTCHA or app login and put it on "Needs you".
+stop at each code, CAPTCHA or app login and put it on "Needs you".
 
 ### 3c. Findings table
 Show one table (masked values only):
@@ -164,30 +164,91 @@ for (let n; (n = walker.nextNode());) {
 
 If you cannot blur reliably, do not save a screenshot; log a text note instead.
 
-## Step 5: GDPR letters (EU / UK / EEA users)
+## Step 4b: Inbox sweep (Gmail): less marketing mail, fewer old accounts
 
-If the user lives in the EU, EEA or UK, offer GDPR letters to:
-- each data broker found in Step 3 that names an EU/UK representative or DPO on its own privacy page,
-- local sites from Step 3a that show the number or email,
-- any company the user knows is calling or texting them for marketing (they name it).
+Offer this; run it only after the user's yes. Browser mode only, in the Gmail the user is **already signed in to**.
+Never sign in, never ask for a password, never use a session you were not handed. If Gmail is not open and signed in,
+say "open Gmail and sign in yourself, then tell me" and wait.
 
-Use `templates/gdpr-request.md` next to this file. It combines Art. 17 erasure, Art. 21(3) objection to direct
-marketing and an Art. 15(1)(g) request for the source of the data; the reply is due within one month (Art. 12(3)).
+Privacy limits for this step:
+- Read only what the message **list** shows: sender, subject, date. Do not open message bodies, except that the user may
+  open one themselves. Never save subjects or bodies to files; the ledger gets sender domain, count and dates only.
+- In the chat table show sender and counts, not subjects (subjects can contain personal details).
+
+### Unsubscribe
+1. Open Gmail's own **Manage subscriptions** view: left menu → "More" → "Manage subscriptions"
+   (Google help: https://support.google.com/mail/answer/15621070; Google says it is rolling out gradually, so it may be missing).
+2. If it is missing, find senders with Gmail search (operators from https://support.google.com/mail/answer/7190):
+   `category:promotions newer_than:6m`, `list:` addresses, `category:updates newer_than:6m`. Count messages per sender.
+3. Show a table: `# | sender | messages (6 months) | last date`. The user picks which ones.
+4. For each picked sender, after the user's yes for that sender, click **Gmail's own "Unsubscribe" button**
+   (in Manage subscriptions, or the "Unsubscribe" link Gmail shows next to the sender name). Never click unsubscribe links
+   inside the email body. Google notes it can take a few days to take effect.
+5. **Suspected scam or phishing** (fake bank/parcel/prize, lookalike domains, urgent payment requests): do not unsubscribe
+   and do not click anything inside. Offer Gmail's **Report spam** (https://support.google.com/mail/answer/1366858) and
+   **Block "sender"** from the three-dot menu (https://support.google.com/mail/answer/8151), each after the user's yes.
+
+### Old accounts (where your email was used to sign up)
+1. Search the list view: `subject:(welcome OR verify OR confirm OR activate OR "your account")`, then
+   `subject:(welcome OR verify) older_than:2y`. Group by sender domain = service.
+2. For each service note the earliest date you can see. Show `# | service | earliest email | still sending?`.
+3. Breaches: ask the user to check their email at https://haveibeenpwned.com (free lookup on the site; do it with them in
+   the browser if they agree). Flag services whose names appear in the breach list. Never show or look for passwords.
+4. For services the user wants gone: find the **account deletion page on the service's own site** (help center,
+   "delete account"). The JustDeleteMe list (github.com/jdm-contrib/jdm, MIT licence) can be a starting hint, but only show
+   a link after you open it on the service's own domain. Deleting an account needs the user's login: that is **their step**
+   (put it on "Needs you"). If there is no deletion page, offer an erasure letter (Step 5).
+5. Log to `ledger.csv`: `site` = service domain, `method` = `gmail_unsubscribe` / `report_spam` / `account_delete` / `letter`.
+
+## Step 4c: B2B contact databases
+
+Sales-contact databases (ZoomInfo, Apollo, Lusha and others) sell phone numbers and emails to sales teams worldwide.
+Use `data-brokers-b2b.md` next to this file: for each company, after the user's yes, open its official opt-out or
+privacy-request page and submit with the user's email (and phone if the form asks). Same rules as Step 4: the user
+handles email links, codes and CAPTCHAs; no account creation, no ID upload, no payment. Most of these do not show a
+profile without an account, so submit the opt-out directly, and in countries with an access right add an access + source
+letter (Step 5). Log `method` = `b2b_optout`.
+
+## Step 4d: National do-not-call registry
+
+Look up the user's **country of residence** in `regions/` (see Step 5) and its "Do-not-call" entry. If an official
+registry exists, give the link and the steps, and offer to open it after the user's yes. Registering (codes, confirmations,
+government sign-ins) is the user's step. Say plainly that these registries cut legitimate telemarketing and do not stop
+scam calls. If there is no registry, say so and point to the letters in Step 5. Log `method` = `dnc_registry`.
+
+## Step 5: Letters by country of residence
+
+Pick the file in `regions/` for the user's country of residence (not nationality):
+- `regions/europe.md`: EU/EEA (GDPR, with the national authority list), UK, Switzerland, Ukraine, Turkey
+- `regions/americas.md`: USA (California first, with DROP; other states), Canada, Brazil, Mexico, Argentina
+- `regions/asia-pacific.md`: Australia, New Zealand, Japan, South Korea, Singapore, India
+- `regions/africa.md`: South Africa
+Each section gives the law, the rights (access + source, erasure, stop marketing), the legal deadline, the regulator, the
+do-not-call option and a letter. EU/EEA and UK letters use `templates/gdpr-request.md`. For any other country, or when a
+section says so, use `templates/letter-generic.md`: polite, no law cited, **no deadline claimed**.
+
+Offer letters to:
+- each company found in Steps 3–4c that holds the user's data,
+- any company the user names that calls, texts or emails them with marketing.
+
 For each letter:
-1. Find the privacy/DPO email **on the company's own website** (privacy policy). Show the user where you found it.
+1. Find the privacy/DPO contact **on the company's own website** (privacy policy). Show the user where you found it.
    If you cannot verify one, say so and do not send.
-2. Show the full draft with phone and email **masked**.
-3. Send only after the user's yes for that letter: by the user's own mail client (give them a `mailto:` link
+2. Write the letter in the company's language (English for international companies). Use the deadline from the region
+   section only; never invent one.
+3. Show the full draft with phone and email **masked**.
+4. Send only after the user's yes for that letter: by the user's own mail client (give them a `mailto:` link
    or the text to paste), or a connected mail tool if one exists and they agree.
-4. Log `status` = `gdpr_sent`, `due` = sent date + 1 month.
-Be honest: a US company with no EU establishment may ignore GDPR. For those, the site's own opt-out (Step 4) is the route.
+5. Log `status` = `letter_sent`, `due` = sent date + the region's deadline (blank if none).
+Be honest: a company outside the user's legal system may ignore the letter. A reply that names the source of the data is
+the best evidence the user can get.
 
 ## Step 6: Summary
 
 End with:
 
-| Found | Submitted | Needs you | Blocked / manual | GDPR sent |
-|-------|-----------|-----------|------------------|-----------|
+| Found | Submitted | Needs you | Blocked / manual | Unsubscribed | Do-not-call | Letters sent |
+|-------|-----------|-----------|------------------|--------------|-------------|--------------|
 
 Then the full "Needs you" list (numbered, with links), then:
 - "Listings can come back. Re-run monthly." Save `recheck.txt` and show the recheck setup below.

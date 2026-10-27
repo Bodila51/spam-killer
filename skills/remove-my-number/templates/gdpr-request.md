@@ -1,6 +1,6 @@
 # GDPR / UK GDPR request: erasure, objection, source of data
 
-Use one letter per company. Fill every `{{PLACEHOLDER}}` before showing the draft to the user.
+Use one letter per company. Fill each `{{PLACEHOLDER}}` before showing the draft to the user.
 Send ONLY after the user says yes to this exact draft, and ONLY to a privacy/DPO contact
 you verified on the company's own website (privacy policy or "Do Not Sell / Privacy" page).
 
@@ -68,4 +68,4 @@ Yours faithfully,
   own opt-out link to the reply plan, plus the CCPA/state-law request form if the company offers one.
 - Show the full draft with the phone number and email **masked** in the chat preview
   (`+359 *** *** *12`, `y***@gmail.com`). Put the real values only into the letter that is actually sent.
-- Log every letter in `ledger.csv` with `status=gdpr_sent` and `due` = sent date + 1 month.
+- Log each letter in `ledger.csv` with `status=letter_sent` and `due` = sent date + 1 month.
